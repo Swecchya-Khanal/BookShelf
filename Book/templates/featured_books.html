@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Featured Books - Your Bookstore</title>
+    <link rel="stylesheet" href="{% static 'css/featured.css' %}" />
+</head>
+
+<body>
+    <section class="featured-books">
+        <div class="container">
+            <form method="GET" action="{% url 'search_books' %}" class="search-box">
+                <input type="text" name="search_query" placeholder="Search by title">
+                <button type="submit">Search</button>
+            </form>
+            <h1>Featured Books</h1>
+
+            <!-- Featured Book Loop -->
+            {% for book in featured_books %}
+            <div class="featured-book">
+                <div class="featured-book-img">
+                    {% if book.upload %}
+                    <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+                    {% else %}
+                    <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+
+                    {% endif %}
+
+                </div>
+                <div class="featured-book-details">
+                    <h2>
+                        {{ book.title }}
+                        {% if book.average_rating is not None %}
+                        <span class="average-rating">
+                            {% for _ in book.average_rating|floatformat %}
+                            <span class="star">&#9733;</span>
+                            {% endfor %}
+                            {% if book.average_rating|floatformat:"0" != book.average_rating %}
+                            {{ book.average_rating }}
+                            {% endif %}
+                            ({{ book.ratings_count }} ratings)
+                        </span>
+                        {% else %}
+                        <span class="average-rating">
+                            Average Rating: 0 ({{ book.ratings_count }} ratings)
+                        </span>
+                        {% endif %}
+                    </h2>
+                    <p class="author">By {{ book.authors }}</p>
+                    <p class="description">{{ book.description }}</p>
+                    <p class="price">${{ book.price }}</p>
+
+
+                    <a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- End Featured Book Loop -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your BookShelf. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

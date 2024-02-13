@@ -1,0 +1,154 @@
+/* your_app/static/css/book_detail.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: calc(100vh - 40px);
+    /* 40px is the total padding (20px top + 20px bottom) */
+    position: relative;
+}
+
+.book-details {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnail img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+.author {
+    color: #555;
+    font-style: italic;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #e44d26;
+}
+
+.buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* Align buttons to the right */
+}
+
+.add-to-cart-button,
+.proceed-to-payment-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    /* Add some margin between buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button {
+    background-color: #27ae60;
+    /* Green color for "Add to Cart" button */
+    color: #fff;
+}
+
+.proceed-to-payment-button {
+    background-color: #e74c3c;
+    /* Red color for "Proceed to Payment" button */
+    color: #fff;
+}
+
+
+.proceed-to-payment-button:hover {
+    background-color: #cc3636;
+    /* Darker green on hover for "Add to Cart" button */
+}
+
+.add-to-cart-button:hover {
+    background-color: #1e8449;
+    /* Darker green on hover for "Add to Cart" button */
+}
+
+.similar-books {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.similar-books h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.similar-books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.similar-book-thumbnail {
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.similar-book-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.similar-book-thumbnail p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.buy-now-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-button:hover {
+    background-color: #2980b9;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}

@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+.wrapper {
+  margin: auto;
+  position: relative;
+  width: 400px;
+  height: 540px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .icon_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #ddd;
+  font-size: 1.5em;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.wrapper .icon_close:hover {
+  background: #ccc;
+}
+
+.login_form_box {
+  padding: 30px;
+  text-align: center;
+}
+
+.login_form_box h2 {
+  font-size: 26px;
+  color: #089da1;
+  margin-bottom: 20px;
+}
+
+.input_box {
+  position: relative;
+  margin: 15px 0;
+}
+
+.input_box input {
+  width: 287px;
+  height: 40px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input_box input:focus {
+  border-color: #089da1;
+}
+
+.input_box .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.remember_forget {
+  font-size: 14px;
+  color: #666;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember_forget label input {
+  margin-right: 5px;
+}
+
+.remember_forget a {
+  color: #089da1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.remember_forget a:hover {
+  color: #077d86;
+}
+
+.submit_button {
+  width: 100%;
+  height: 45px;
+  background: #089da1;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.submit_button:hover {
+  background: #077d86;
+}
+
+.login_register {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login_register p a {
+  color: #089da1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login_register p a:hover {
+  color: #077d86;
+}

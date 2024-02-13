@@ -1,0 +1,563 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  background-image: url(image/bg.png);
+  background-size: cover;
+  background-position: center;
+}
+
+section nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out;
+}
+
+section nav:hover {
+  background-color: #f8f8f8;
+}
+
+section nav .logo img {
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+section nav:hover .logo img {
+  transform: scale(1.1);
+}
+
+section nav ul {
+  list-style: none;
+  display: flex;
+}
+
+section nav li {
+  margin: 0 15px;
+}
+
+section nav li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+section nav li a:hover {
+  color: #089da1;
+}
+
+section nav .nav_search {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+section nav .search_input {
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+
+
+
+section nav .search_button {
+  background-color: #089da1;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+section nav .search_input:focus {
+  border-color: #089da1;
+}
+
+section nav .search_button:hover {
+  background-color: #06777f;
+}
+
+section nav .social_icon i {
+  margin: 0 5px;
+  font-size: 18px;
+}
+
+section nav .social_icon i:hover {
+  color: #089da1;
+  cursor: pointer;
+}
+
+/* main part code */
+section .main {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  top: 10%;
+}
+
+section .main h1 {
+  position: relative;
+  font-size: 55px;
+  top: 80px;
+  left: 25px;
+}
+
+section .main h1 span {
+  color: #089da1;
+}
+
+section .main p {
+  width: 650px;
+  text-align: justify;
+  line-height: 22px;
+  position: relative;
+  top: 125px;
+  left: 25px;
+}
+
+section .main .main_tag .main_btn {
+  background: #089da1;
+  padding: 10px 20px;
+  position: relative;
+  top: 200px;
+  left: 25px;
+  color: #fff;
+  text-decoration: none;
+}
+
+section .main .main_img img {
+  width: 780px;
+  height: 630px;
+  position: relative;
+  top: 90px;
+  left: 20px;
+}
+
+
+/* hero_section */
+
+/*services*/
+
+.services {
+  width: 100%;
+  height: auto;
+  margin: 35px 0;
+}
+
+.services .services_box {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.services .services_box .services_card {
+  text-align: center;
+  width: 310px;
+  height: auto;
+  box-shadow: 0 0 8px #089da1;
+  padding: 15px 10px;
+}
+
+.services .services_box .services_card i {
+  color: #089da1;
+  font-size: 45px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.services .services_box .services_card h3 {
+  margin-bottom: 10px;
+}
+
+/*about*/
+
+.about {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about .about_image img {
+  width: 800px;
+}
+
+.about .about_tag h1 {
+  font-size: 50px;
+  position: relative;
+  bottom: 35px;
+}
+
+.about .about_tag p {
+  line-height: 22px;
+  width: 650px;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.about .about_tag .about_btn {
+  padding: 10px 20px;
+  background: #089da1;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  top: 50px;
+}
+
+/*Books*/
+
+.featured_boks {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0;
+}
+
+.featured_boks h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 45px;
+}
+
+.featured_boks .featured_book_box {
+  width: 95%;
+  height: 60vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.featured_boks .featured_book_box .featured_book_card {
+  width: 250px;
+  height: 420px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #919191;
+  margin: auto 20px;
+  position: relative;
+}
+
+.featured_boks .featured_book_box .featured_book_card:hover {
+  box-shadow: 0 0 5px #089da1;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_img img {
+  width: 150px;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag h2 {
+  margin: 12px;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .writer {
+  color: #919191;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .categories {
+  color: #089da1;
+  margin-top: 8px;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .book_price {
+  margin-top: 8px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .book_price sub {
+  font-weight: 100;
+  padding: 0 5px;
+}
+
+.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .f_btn {
+  padding: 8px 20px;
+  border: 2px solid #089da1;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Style for the Add to Cart button */
+.add_to_cart_btn {
+  display: inline-block;
+  background-color: #e95b30;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.add_to_cart_btn:hover {
+  background-color: #c96fad;
+}
+
+/* for centering */
+.add_to_cart_btn {
+  position: absolute;
+  bottom: 30px;
+  right: 63px;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #089da1;
+  border-radius: 10px;
+}
+
+/*arrivals*/
+
+.arrivals {
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 35px;
+}
+
+.arrivals h1 {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.arrivals .arrivals_box {
+  width: 95%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 25px 0;
+}
+
+.arrivals .arrivals_box .arrivals_card {
+  width: 250px;
+  height: 340px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #919191;
+  margin: auto 20px;
+}
+
+.arrivals .arrivals_box .arrivals_card:hover {
+  box-shadow: 0 0 5px #089da1;
+}
+
+.arrivals .arrivals_box .arrivals_card .arrivals_image {
+  width: 150px;
+  height: 220px;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.arrivals .arrivals_box .arrivals_card .arrivals_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.3s;
+}
+
+.arrivals .arrivals_box .arrivals_card:hover .arrivals_image img {
+  transform: scale(1.1);
+}
+
+.arrivals .arrivals_box .arrivals_card .arrivals_tag p {
+  font-family: queen of camelot;
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+.arrivals .arrivals_box .arrivals_card .arrivals_tag .arrivals_icon {
+  color: #089da1;
+  margin-bottom: 18px;
+}
+
+.arrivals .arrivals_box .arrivals_card .arrivals_tag .arrivals_btn {
+  padding: 8px 20px;
+  border: 2px solid #089da1;
+  text-decoration: none;
+  color: #000;
+}
+
+/*reviews*/
+
+.reviews {
+  width: 100%;
+  height: auto;
+}
+
+.reviews h1 {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 55px;
+}
+
+.reviews .review_box {
+  width: 95%;
+  height: 50vh;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviews .review_box .review_card {
+  width: 400px;
+  height: 320px;
+  box-shadow: 0 0 8px #089da1;
+  padding: 15px;
+  margin: 0 12px;
+}
+
+.reviews .review_box .review_card i {
+  float: right;
+  font-size: 120px;
+  position: relative;
+  bottom: 20px;
+  color: #eaeaea;
+}
+
+.reviews .review_box .review_card .card_top img {
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.reviews .review_box .review_card .card p {
+  margin: 10px 0 10px 0;
+  text-align: justify;
+  line-height: 22px;
+}
+
+.reviews .review_box .review_card .card .review_icon i {
+  font-size: 16px;
+  float: left;
+  margin-top: 20px;
+  color: #089da1;
+  padding: 0 1px;
+}
+
+/* for footer  */
+
+footer {
+  margin-top: 15px;
+}
+
+.foot-panel1 {
+  background-color: #37475a;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.foot-panel2 {
+  background-color: #222f3d;
+  color: white;
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+ul {
+  margin-top: 20px;
+}
+
+ul a {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  color: #dddddd;
+}
+
+.foot-panel3 {
+  background-color: #222f3d;
+  color: white;
+  border-top: 0.5px solid white;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  background-image: url(amazon_logo.png);
+  background-size: cover;
+  height: 70px;
+  width: 100px;
+}
+
+.foot-panel4 {
+  background-color: #0f1111;
+  color: white;
+  height: 80px;
+  font-size: 0.7rem;
+  text-align: center;
+  /* display: flex;
+      justify-content: center;
+      align-items: center; */
+}
+
+.pages {
+  padding-top: 25px;
+}
+
+.pages a {
+  color: pink;
+  margin: 0px 10px;
+}
+
+.copyright {
+  padding-top: 5px;
+}
+
+.author {
+  background-color: #007185;
+  color: palevioletred;
+  height: 20px;
+  text-decoration: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

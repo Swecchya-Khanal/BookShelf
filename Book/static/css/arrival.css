@@ -1,0 +1,77 @@
+/* your_app/static/css/arrival.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.new-arrivals {
+    margin-top: 20px;
+}
+
+.arrival-book {
+    display: flex;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.arrival-book-img {
+    flex: 1;
+}
+
+.arrival-book-img img {
+    width: 100%;
+    height: auto;
+}
+
+.arrival-book-details {
+    flex: 2;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.author {
+    color: #555;
+    font-style: italic;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #e44d26;
+}
+
+.buy-now-button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-button:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}

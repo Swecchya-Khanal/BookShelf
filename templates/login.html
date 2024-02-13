@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Your Bookstore</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/login.css' %}">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <span class="icon_close"><ion-icon name="close-outline"></ion-icon></span>
+
+        <div class="login_form_box">
+            <h2>Login</h2>
+            {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+            {% endif %}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <div class="input_box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="text" placeholder="Email" required name="username" />
+                </div>
+
+                <div class="input_box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" placeholder="Password" required name="password" />
+                </div>
+
+                <div class="remember_forget">
+                    <label><input type="checkbox" />Remember me</label>
+                    <a href="#">Forgot Password</a>
+                </div>
+
+                <button type="submit" class="submit_button">Login</button>
+            </form>
+
+            <div class="login_register">
+                <p>
+                    Don't have an account?
+                    <a href="{% url 'register'%}" class="register_link">Register</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

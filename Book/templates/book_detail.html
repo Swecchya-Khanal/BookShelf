@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Your Bookstore</title>
+    <link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
+</head>
+
+<body>
+    <section class="book-details">
+        <div class="container">
+            <div class="thumbnail">
+                {% if book.upload %}
+                <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+                {% else %}
+                <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+                {% endif %}
+            </div>
+            <h2>
+                {{ book.title }}
+                {% if book.average_rating is not None %}
+                <span class="average-rating">
+                    {% for _ in book.average_rating|floatformat %}
+                    <span class="star">&#9733;</span>
+                    {% endfor %}
+                    {% if book.average_rating|floatformat:"0" != book.average_rating %}
+                    {{ book.average_rating }}
+                    {% endif %}
+                    ({{ book.ratings_count }} ratings)
+                </span>
+                {% else %}
+                <span class="average-rating">
+                    Average Rating: 0 ({{ book.ratings_count }} ratings)
+                </span>
+                {% endif %}
+            </h2>
+            <p class="author">By {{ book.authors }}</p>
+            <p class="description">{{ book.description }}</p>
+            <p class="price">${{ book.price }}</p>
+
+            <div class="buttons-container">
+                <button class="add-to-cart-button">Add to Cart</button>
+                <button class="proceed-to-payment-button">Proceed to Payment</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="similar-books">
+        <div class="container">
+            <h3>Similar Books</h3>
+            <div class="similar-books-list">
+                {% for book in similar_books %}
+                <div class="similar-book-thumbnail">
+                    <img src="{% if book.upload %}{{ book.upload.url }}{% else %}{{ book.thumbnail }}{% endif %}"
+                        alt="{{ book.title }}">
+                    <p>{{ book.title }}</p>
+                    <p>By {{ book.authors }}</p>
+                    <p class="price">${{ book.price }}</p>
+                    <a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a>
+                    <!-- Add more details or customize as needed -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2024 Your BookShelf. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

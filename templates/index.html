@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookShelf</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'base/style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <section>
+    <nav>
+      <div class="logo">
+        <img src={% static 'logo.png' %} />
+      </div>
+
+      <ul>
+        <li><a href="{% url 'home'%}">Home</a></li>
+        <li><a href="{% url 'about'%}">About</a></li>
+        <li><a href="{% url 'featured_books' %}" class="featured-button">Featured</a></li>
+        <li><a href="{% url 'new_arrival' %}" class="arrival-button">New Arrivals</a></li>
+        <li><a href="{% url 'reviews'%}">Reviews</a></li>
+        {% if user.is_authenticated %}
+        <!-- Display username and logout button if the user is authenticated -->
+        <li>
+          <span>Welcome, {{ user.username }}</span>
+          <a href="{% url 'logout' %}" class="login_popup">Logout</a>
+        </li>
+        {% else %}
+        <!-- Display login button if the user is not authenticated -->
+        <li><a href="{% url 'login' %}" class="login_popup">Login</a></li>
+        {% endif %}
+
+        <form action="{% url 'search_results' %}" method="GET">
+          <div class="nav_search">
+            <input type="text" name="q" placeholder="Search in BookShelf" class="search_input" />
+            <button type="submit" class="search_button">
+              <i class="fa-solid fa-magnifying-glass icon-magnifying-glass"></i>
+            </button>
+          </div>
+        </form>
+
+      </ul>
+
+    </nav>
+
+
+    <div class="main">
+      <div class="main_tag">
+        <h1>Welcome to<br /><span>BookShelf</span></h1>
+
+        <p>
+          You are in bookself.com. You can also shop BookShelf Nepal for
+          variety of books of your interest with fast local delivery.
+          <a href="#">Click here to go to bookself.np</a>
+        </p>
+        <a href="#" class="main_btn">Learn More</a>
+      </div>
+
+      <div class="main_img">
+        <img src="{% static 'book1.gif' %}" />
+      </div>
+
+  </section>
+
+
+  <!--reviews-->
+
+  <div class="reviews">
+    <h1>Reviews</h1>
+
+    <div class="review_box">
+      <div class="review_card">
+        <i class="fa-solid fa-quote-right"></i>
+        <div class="card_top">
+          <img src="review_1.png" />
+        </div>
+        <div class="card">
+          <h2>#</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
+            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
+            voluptas excepturi aut.
+          </p>
+          <div class="review_icon">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="review_card">
+        <i class="fa-solid fa-quote-right"></i>
+        <div class="card_top">
+          <img src="review_2.png" />
+        </div>
+        <div class="card">
+          <h2>#</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
+            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
+            voluptas excepturi aut.
+          </p>
+          <div class="review_icon">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="review_card">
+        <i class="fa-solid fa-quote-right"></i>
+        <div class="card_top">
+          <img src="review_3.png" />
+        </div>
+        <div class="card">
+          <h2>#</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
+            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
+            voluptas excepturi aut.
+          </p>
+          <div class="review_icon">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="review_card">
+        <i class="fa-solid fa-quote-right"></i>
+        <div class="card_top">
+          <img src="review_4.png" />
+        </div>
+        <div class="card">
+          <h2>#</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
+            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
+            voluptas excepturi aut.
+          </p>
+          <div class="review_icon">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-panel1">Back to top</div>
+
+    <div class="foot-panel2">
+      <ul>
+        <p>Get to know us</p>
+        <a href="#">Contact Us</a>
+        <a href="#">About BookSelf</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">BookSelf Products</a>
+      </ul>
+
+      <ul>
+        <p>Get to know us</p>
+        <a href="#">Contact Us</a>
+        <a href="#">About BookSelf</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">BookSelf Products</a>
+      </ul>
+
+      <ul>
+        <p>Get to know us</p>
+        <a href="#">Contact Us</a>
+        <a href="#">About BookSelf</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">BookSelf Products</a>
+      </ul>
+
+      <ul>
+        <p>Get to know us</p>
+        <a href="#">Contact Us</a>
+        <a href="#">About BookSelf</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">BookSelf Products</a>
+      </ul>
+    </div>
+
+    <div class="foot-panel3">
+      <div class="logo"></div>
+    </div>
+
+    <div class="foot-panel4">
+      <div class="pages">
+        <a href="#">Conditions of use</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Your Ads</a>
+        <a href="#">Privacy Choices</a>
+      </div>
+
+      <div class="copyright">
+        &copy;2023-2030, bookself.com,Inc,or its affiliates
+      </div>
+    </div>
+    <div class="author">
+      Created with <i class="fa-solid fa-heart fa-flip"></i> by BookSelf Teams
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
