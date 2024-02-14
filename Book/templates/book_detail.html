@@ -8,8 +8,31 @@
     <title>{{ book.title }} - Your Bookstore</title>
     <link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
 </head>
+<style>
+    /* Add your existing styles here */
+
+    .fixed-button-container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        /* Adjust as needed */
+    }
+
+    .view-cart-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
 
 <body>
+    <div class="fixed-button-container">
+        <button class="view-cart-button" onclick="window.location.href='/cart/view/'">View Cart</button>
+    </div>
+
     <section class="book-details">
         <div class="container">
             <div class="thumbnail">
