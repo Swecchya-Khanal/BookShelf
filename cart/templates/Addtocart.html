@@ -6,18 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/cart/addtocart.css' %}">
+    <link rel="stylesheet" href="{% static 'cart/addtocart.css' %}">
     <link
         href="https://fonts.googleapis.com/css2?family=Chivo&family=Poppins:wght@300;400;500;600;700&family=Rosario:wght@400;700&family=Source+Code+Pro&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Cart</title>
 </head>
-
-
 
 <body>
     <!-- cart items details -->
@@ -47,12 +42,15 @@
                     </div>
                 </td>
                 <td>
-                    <input type="number" value="{{ cart_item.quantity }}" data-book-id="{{ cart_item.book.id }}">
-                    <button class="update-quantity" data-book-id="{{ cart_item.book.id }}"
-                        data-url="{% url 'update_quantity' cart_item.book.id %}">Update</button>
-
+                    <form method="post" action="{% url 'update_quantity' cart_item.book.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="{{ cart_item.quantity }}"
+                            data-book-id="{{ cart_item.book.id }}">
+                        <button type="submit" class="update-quantity"
+                            data-url="{% url 'update_quantity' cart_item.book.id %}">Update</button>
+                    </form>
                 </td>
-                <td>$ {{ cart_item.subtotal|floatformat:"2" }} </td>
+                <td>$ {{ cart_item.subtotal|floatformat:2 }} </td>
             </tr>
             {% endfor %}
         </table>
@@ -60,51 +58,12 @@
             <table>
                 <tr>
                     <td>Total</td>
-                    <td>$ {{ total_price|floatformat:"2" }}</td>
+                    <td>$ {{ total_price|floatformat:2 }}</td>
                 </tr>
             </table>
         </div>
         <button class="checkout-btn">Checkout</button>
-        </a>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all elements with the class 'update-quantity'
-            var updateButtons = document.querySelectorAll('.update-quantity');
-
-            // Add a click event listener to each button
-            updateButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    // Get the update URL from the data-url attribute
-                    var updateUrl = this.getAttribute('data-url');
-
-                    // Get the quantity from the input field
-                    var quantity = parseInt(this.parentElement.querySelector('input').value);
-
-                    // Send an AJAX request to update the quantity
-                    fetch(updateUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'X-CSRFToken': '{{ csrf_token }}' // Add CSRF token for Django
-                        },
-                        body: 'quantity=' + quantity
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // Reload the page or update the cart display as needed
-                                window.location.reload(); // You can change this based on your requirements
-                            } else {
-                                console.error('Failed to update quantity');
-                            }
-                        })
-                        .catch(error => console.error('Error:', error));
-                });
-            });
-        });
-    </script>
-
 </body>
 
 </html>

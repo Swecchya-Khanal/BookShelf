@@ -8,6 +8,7 @@
     <title>{{ book.title }} - Your Bookstore</title>
     <link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
 </head>
+
 <style>
     /* Add your existing styles here */
 
@@ -65,34 +66,12 @@
             <p class="price">${{ book.price }}</p>
 
             <div class="buttons-container">
-                <form id="add-to-cart-form" data-book-id="{{ book.id }}">
+                <form action="{% url 'add_to_cart' book.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="add-to-cart-button">Add to Cart</button>
                 </form>
 
-                <script>
-                    document.getElementById('add-to-cart-form').addEventListener('submit', function (event) {
-                        event.preventDefault();
 
-                        const bookId = this.getAttribute('data-book-id');
-                        const quantity = 1;  // You may want to allow the user to specify the quantity
-
-                        // Make an AJAX request to add the book to the cart
-                        fetch(`/cart/add/${bookId}/`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
-                            },
-                            body: JSON.stringify({ quantity }),
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Handle the response, update the UI, etc.
-                            });
-                    });
-                </script>
-                <button class="proceed-to-payment-button">Proceed to Payment</button>
             </div>
         </div>
     </section>
@@ -115,7 +94,6 @@
             </div>
         </div>
     </section>
-
 
     <footer>
         <p>&copy; 2024 Your BookShelf. All rights reserved.</p>
