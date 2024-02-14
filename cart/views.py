@@ -20,7 +20,7 @@ def add_to_cart(request, book_id):
             'title': book.title,
             'price': book.price,
             'thumbnail': book.thumbnail,
-            'upload': book.upload.url,
+            'upload': book.upload.url if book.upload else '',
         }
         cart[book_id] = cart_item
 
