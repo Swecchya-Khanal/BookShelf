@@ -31,7 +31,13 @@
 
 <body>
     <div class="fixed-button-container">
+        {% if user.is_authenticated %}
         <button class="view-cart-button" onclick="window.location.href='/cart/view/'">View Cart</button>
+        {% else %}
+        <form action="{% url 'login' %}" method="get">
+            <button class="view-cart-button" onclick="window.location.href='/cart/view/'">View Cart</button>
+        </form>
+        {% endif %}
     </div>
 
     <section class="book-details">
@@ -66,13 +72,21 @@
             <p class="price">${{ book.price }}</p>
 
             <div class="buttons-container">
+
+                {% if user.is_authenticated %}
                 <form action="{% url 'add_to_cart' book.id %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="add-to-cart-button">Add to Cart</button>
                 </form>
-
-
+                {% else %}
+                <form action="{% url 'login' %}" method="get">
+                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                </form>
+                {% endif %}
             </div>
+
+
+
         </div>
     </section>
 

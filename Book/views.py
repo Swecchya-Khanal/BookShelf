@@ -16,7 +16,7 @@ class BookDetailViewWithSimilarBooks(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # Assuming authors and categories are ForeignKeys in the Book model
+        
         similar_books = Book.objects.filter(
             Q(authors=self.object.authors) | Q(categories=self.object.categories)
         ).exclude(id=self.object.id).distinct()[:5]
