@@ -37,3 +37,8 @@ def create_order(request):
         form = OrderForm()
 
     return render(request, 'create_order.html', {'form': form, 'cart_items': cart_items, 'total_price': total_price})
+
+@login_required
+def my_order_list(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'my_order_list.html', {'orders': orders})

@@ -15,6 +15,7 @@
 <body>
 
     <div class="container">
+        {% if cart_items %}
         <form method="post" action="{% url 'order:create_order' %}">
 
             {% csrf_token %}
@@ -79,6 +80,9 @@
 
             <input type="submit" value="Place Order" class="submit-btn">
         </form>
+        {% else %}
+        <p>No books to order. Please add some to your cart.</p>
+        {% endif %}
     </div>
 
 </body>

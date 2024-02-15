@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <!-- Add your CSS or other head elements here -->
+</head>
+
+<body>
+
+    <h2>My Orders</h2>
+
+    {% if orders %}
+    <ul>
+        {% for order in orders %}
+        <li>
+            <strong>Order ID:</strong> {{ order.pk }}<br>
+            <strong>Total Price:</strong> RS {{ order.total_price|floatformat:2 }}<br>
+            <strong>Ordered at:</strong> {{ order.created_at }}
+            <!-- You can display other order details here -->
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>You haven't placed any orders yet.</p>
+    {% endif %}
+
+    <!-- Add your additional content or scripts here -->
+
+</body>
+
+</html>

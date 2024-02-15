@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>order Successful</title>
+    <title>Order Successful</title>
 </head>
 
 <body>
-    order successful
+    <h1>Order Successful</h1>
+    <p>Your order has been placed successfully.</p>
+
+    <!-- Button to navigate to My Orders -->
+    <a href="{% url 'order:my_order_list' %}">
+        <button>View My Orders</button>
+    </a>
 </body>
 
 </html>
