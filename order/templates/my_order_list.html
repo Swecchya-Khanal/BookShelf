@@ -1,3 +1,5 @@
+<!-- order/templates/my_order_list.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,8 +21,24 @@
         <li>
             <strong>Order ID:</strong> {{ order.pk }}<br>
             <strong>Total Price:</strong> RS {{ order.total_price|floatformat:2 }}<br>
-            <strong>Ordered at:</strong> {{ order.created_at }}
-            <!-- You can display other order details here -->
+            <strong>Ordered at:</strong> {{ order.created_at }}<br>
+
+            <strong>Ordered Books:</strong>
+            <ul>
+                {% for book in order.books.all %}
+                <li>
+                    {{ book.title }} - {{ book.price }} RS
+                    <!-- Add your rating form for the book here -->
+                    <form method="post" action="{% url 'order:rate_book' book.id %}">
+                        {% csrf_token %}
+                        <!-- Your rating input and submit button here -->
+                        <input type="number" name="rating" min="1" max="5" required>
+                        <button type="submit">Submit Rating</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+
         </li>
         {% endfor %}
     </ul>

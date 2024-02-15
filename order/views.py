@@ -1,10 +1,13 @@
 # views.py in your order app
 
 from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import OrderForm
 from .models import Order
 from Book.models import Book
+from django.http import HttpResponse, HttpResponseRedirect
+from Book.models import Book, MyRating
 
 @login_required
 def create_order(request):
@@ -42,3 +45,28 @@ def create_order(request):
 def my_order_list(request):
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'my_order_list.html', {'orders': orders})
+
+
+@login_required
+def rate_book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+
+    if request.method == 'POST':
+        # Handle the rating form submission
+        rating_value = int(request.POST.get('rating', 0))
+
+        if 1 <= rating_value <= 5:
+            # Check if the user has already rated the book
+            existing_rating = MyRating.objects.filter(user=request.user, book=book).first()
+
+            if existing_rating:
+                # Update the existing rating
+                existing_rating.ratingno = rating_value
+                existing_rating.save()
+            else:
+                # Create a new rating
+                MyRating.objects.create(user=request.user, book=book, ratingno=rating_value)
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    return render(request, 'rate_book.html', {'book': book})
