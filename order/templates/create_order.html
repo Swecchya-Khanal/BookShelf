@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form method="post" action="{% url 'order:create_order' %}">
+
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col">
+                    <h3 class="title">Order Details</h3>
+                    <div class="order-detail">
+                        <table>
+                            <tr>
+                                <th>Books</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                            </tr>
+                            {% for cart_item in cart_items %}
+                            <tr>
+                                <td>
+                                    <div class="cart-info">
+                                        {% if cart_item.book.upload %}
+                                        <img src="{{ cart_item.book.upload }}" alt="{{ cart_item.book.title }}">
+                                        {% else %}
+                                        <img src="{{ cart_item.book.thumbnail }}" alt="{{ cart_item.book.title }}">
+                                        {% endif %}
+                                        <div>
+                                            <p>{{ cart_item.book.title }}</p>
+                                            <small>Price: RS {{ cart_item.book.price }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ cart_item.quantity }}</td>
+                                <td>$ {{ cart_item.subtotal}} </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+
+                        <!-- Additional form fields for user details and payment option -->
+                        <div class="inputBox">
+                            <span>First name :</span>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="inputBox">
+                            <span>Last name :</span>
+                            {{ form.last_name }}
+                        </div>
+                        <div class="inputBox">
+                            <span>Address :</span>
+                            {{ form.address }}
+                        </div>
+                        <div class="inputBox">
+                            <span>Payment Option :</span>
+                            {{ form.payment_option }}
+                        </div>
+
+                        <!-- Display total price based on items in the cart -->
+                        <div class="total-price">
+                            <span>Total:</span>
+                            RS {{ total_price|floatformat:2 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Place Order" class="submit-btn">
+        </form>
+    </div>
+
+</body>
+
+</html>

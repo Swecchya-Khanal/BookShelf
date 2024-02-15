@@ -12,7 +12,6 @@ class Category(models.Model):
         return self.Cat_name
 
 class Author(models.Model):
-    Author_id = models.IntegerField(primary_key=True)
     Authorname = models.TextField()
 
     def __str__(self):
