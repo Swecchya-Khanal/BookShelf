@@ -50,5 +50,8 @@ def custom_logout(request):
     logout(request)
     return redirect('home') 
   
+from django.shortcuts import render
+
+
 
 

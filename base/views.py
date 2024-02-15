@@ -13,7 +13,16 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'index.html')
+    
+    # Get the top-rated books based on average rating
+    top_rated_books = Book.objects.filter(ratings_count__gt=0).order_by('-average_rating')[:5]
+
+    context = {
+        'top_rated_books': top_rated_books,
+    }
+
+    return render(request, 'index.html', context)
+    
 
 def about(request):
     return render(request, 'about_us.html')

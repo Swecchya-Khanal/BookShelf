@@ -14,6 +14,57 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
+<style>
+  .top-rated-books {
+    margin-top: 20px;
+  }
+
+  .top-rated-books h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .top-rated-books ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Use flexbox for side-by-side layout */
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
+    justify-content: space-between;
+    /* Add space between items */
+  }
+
+  .top-rated-books li {
+    width: calc(33.33% - 20px);
+    /* Set width for each item with some margin in between */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+  }
+
+  .top-rated-books img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .top-rated-books h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .top-rated-books p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #555;
+  }
+</style>
+
 <body>
   <section>
     <nav>
@@ -70,7 +121,25 @@
 
   </section>
 
+  <div class="top-rated-books">
+    <h2>Top Rated Books</h2>
+    <ul>
+      {% for book in top_rated_books %}
+      <li>
+        {% if book.upload %}
+        <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+        {% else %}
+        <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
 
+        {% endif %}
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.authors.Authorname }}</p>
+        <p>Rating: {{ book.average_rating }}</p>
+        <p>Price: RS {{ book.price }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
   <!--reviews-->
 
   <div class="reviews">
