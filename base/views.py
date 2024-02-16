@@ -15,7 +15,7 @@ from django.contrib import messages
 def home(request):
     
     # Get the top-rated books based on average rating
-    top_rated_books = Book.objects.filter(ratings_count__gt=0).order_by('-average_rating')[:5]
+    top_rated_books = Book.objects.filter(ratings_count__gt=0).order_by('-average_rating')[:10]
 
     context = {
         'top_rated_books': top_rated_books,
@@ -67,6 +67,8 @@ def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
+        firstname =request.POST['first_name']
+        lastname=request.POST['last_name']
         password = request.POST['password']
         password1 = request.POST['password1']
 
@@ -78,7 +80,7 @@ def signup(request):
                 messages.info(request ,'Username Taken Already')
                 return redirect ('register')
             else:
-                user = User.objects.create_user(username=username , email= email , password= password)
+                user = User.objects.create_user(username=username ,first_name=firstname ,last_name=lastname ,email= email , password= password)
                 user.save()
                 login_user = auth.authenticate(request , username = username , password = password)
                 auth.login(request , login_user)

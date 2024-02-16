@@ -1,0 +1,76 @@
+/* yourapp/static/yourapp/css/browse.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.browse-book {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.browse-book-img {
+    margin-right: 15px;
+}
+
+.browse-book-img img {
+    max-width: 100px;
+    max-height: 150px;
+}
+
+.browse-book-details {
+    flex-grow: 1;
+}
+
+h2 {
+    margin: 0;
+}
+
+.average-rating {
+    display: inline-block;
+    margin-top: 5px;
+    color: #000000;
+    /* Gold color for stars */
+}
+
+.star {
+    font-size: 1.2em;
+}
+
+.author,
+.categories,
+.price {
+    margin: 5px 0;
+    color: #666;
+}
+
+.buy-now-button {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.buy-now-button:hover {
+    background-color: #2980b9;
+}

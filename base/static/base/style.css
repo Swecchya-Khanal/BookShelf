@@ -7,7 +7,7 @@
 
 section {
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background-image: url(image/bg.png);
   background-size: cover;
   background-position: center;
@@ -159,322 +159,86 @@ section .main .main_img img {
 
 /* hero_section */
 
-/*services*/
-
-.services {
-  width: 100%;
-  height: auto;
-  margin: 35px 0;
+.top-rated-books {
+  margin-top: 20px;
 }
 
-.services .services_box {
-  width: 95%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.services .services_box .services_card {
+.top-rated-books h2 {
+  font-size: 24px;
   text-align: center;
-  width: 310px;
-  height: auto;
-  box-shadow: 0 0 8px #089da1;
-  padding: 15px 10px;
-}
-
-.services .services_box .services_card i {
-  color: #089da1;
-  font-size: 45px;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-.services .services_box .services_card h3 {
+  color: #333;
   margin-bottom: 10px;
 }
 
-/*about*/
-
-.about {
-  width: 100%;
-  height: auto;
-  padding: 20px;
+.top-rated-books ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory;
+  /* Enable mandatory horizontal scrolling */
 }
 
-.about .about_image img {
-  width: 800px;
+.top-rated-books li {
+  flex: 0 0 calc(25% - 100px);
+  /* Adjust the width based on the number of items you want to show per row */
+  margin-right: 5px;
+  /* Adjust the margin to your preference */
+  box-sizing: border-box;
+  scroll-snap-align: 0;
+  /* Align items to the start of the scroll container */
 }
 
-.about .about_tag h1 {
-  font-size: 50px;
-  position: relative;
-  bottom: 35px;
+.top-rated-books li:first-child {
+  margin-left: 20px;
+
 }
 
-.about .about_tag p {
-  line-height: 22px;
-  width: 650px;
-  text-align: justify;
-  margin-bottom: 15px;
+/* Optional: Hide the scrollbar for a cleaner look */
+.top-rated-books ul::-webkit-scrollbar {
+  display: none;
 }
 
-.about .about_tag .about_btn {
-  padding: 10px 20px;
-  background: #089da1;
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  top: 50px;
+
+
+.top-rated-books img {
+  max-width: 100%;
+  height: 300px;
+  /* Set a fixed height for all images */
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the container */
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-/*Books*/
-
-.featured_boks {
-  width: 100%;
-  height: 100vh;
-  padding: 70px 0;
+.top-rated-books h3 {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
 }
 
-.featured_boks h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  font-size: 45px;
+.top-rated-books p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
 }
 
-.featured_boks .featured_book_box {
-  width: 95%;
-  height: 60vh;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  overflow: hidden;
-  overflow-x: scroll;
-}
-
-.featured_boks .featured_book_box .featured_book_card {
-  width: 250px;
-  height: 420px;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid #919191;
-  margin: auto 20px;
-  position: relative;
-}
-
-.featured_boks .featured_book_box .featured_book_card:hover {
-  box-shadow: 0 0 5px #089da1;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_img img {
-  width: 150px;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag h2 {
-  margin: 12px;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .writer {
-  color: #919191;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .categories {
-  color: #089da1;
-  margin-top: 8px;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .book_price {
-  margin-top: 8px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .book_price sub {
-  font-weight: 100;
-  padding: 0 5px;
-}
-
-.featured_boks .featured_book_box .featured_book_card .featurde_book_tag .f_btn {
-  padding: 8px 20px;
-  border: 2px solid #089da1;
-  text-decoration: none;
-  color: #000;
-}
-
-/* Style for the Add to Cart button */
-.add_to_cart_btn {
+.top-rated-books p a.buy-now-button {
   display: inline-block;
-  background-color: #e95b30;
+  background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
+  padding: 8px 16px;
   text-decoration: none;
-  text-align: center;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: background-color 0.3s;
 }
 
-.add_to_cart_btn:hover {
-  background-color: #c96fad;
+.top-rated-books p a.buy-now-button:hover {
+  background-color: #0056b3;
 }
 
-/* for centering */
-.add_to_cart_btn {
-  position: absolute;
-  bottom: 30px;
-  right: 63px;
-}
-
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #089da1;
-  border-radius: 10px;
-}
-
-/*arrivals*/
-
-.arrivals {
-  width: 100%;
-  height: 100vh;
-  margin-bottom: 35px;
-}
-
-.arrivals h1 {
-  font-size: 50px;
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.arrivals .arrivals_box {
-  width: 95%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 25px 0;
-}
-
-.arrivals .arrivals_box .arrivals_card {
-  width: 250px;
-  height: 340px;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid #919191;
-  margin: auto 20px;
-}
-
-.arrivals .arrivals_box .arrivals_card:hover {
-  box-shadow: 0 0 5px #089da1;
-}
-
-.arrivals .arrivals_box .arrivals_card .arrivals_image {
-  width: 150px;
-  height: 220px;
-  margin: 0 auto;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-}
-
-.arrivals .arrivals_box .arrivals_card .arrivals_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: 0.3s;
-}
-
-.arrivals .arrivals_box .arrivals_card:hover .arrivals_image img {
-  transform: scale(1.1);
-}
-
-.arrivals .arrivals_box .arrivals_card .arrivals_tag p {
-  font-family: queen of camelot;
-  font-size: 20px;
-  margin: 8px 0;
-}
-
-.arrivals .arrivals_box .arrivals_card .arrivals_tag .arrivals_icon {
-  color: #089da1;
-  margin-bottom: 18px;
-}
-
-.arrivals .arrivals_box .arrivals_card .arrivals_tag .arrivals_btn {
-  padding: 8px 20px;
-  border: 2px solid #089da1;
-  text-decoration: none;
-  color: #000;
-}
-
-/*reviews*/
-
-.reviews {
-  width: 100%;
-  height: auto;
-}
-
-.reviews h1 {
-  text-align: center;
-  font-size: 50px;
-  margin-top: 55px;
-}
-
-.reviews .review_box {
-  width: 95%;
-  height: 50vh;
-  margin: 15px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.reviews .review_box .review_card {
-  width: 400px;
-  height: 320px;
-  box-shadow: 0 0 8px #089da1;
-  padding: 15px;
-  margin: 0 12px;
-}
-
-.reviews .review_box .review_card i {
-  float: right;
-  font-size: 120px;
-  position: relative;
-  bottom: 20px;
-  color: #eaeaea;
-}
-
-.reviews .review_box .review_card .card_top img {
-  width: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.reviews .review_box .review_card .card p {
-  margin: 10px 0 10px 0;
-  text-align: justify;
-  line-height: 22px;
-}
-
-.reviews .review_box .review_card .card .review_icon i {
-  font-size: 16px;
-  float: left;
-  margin-top: 20px;
-  color: #089da1;
-  padding: 0 1px;
-}
 
 /* for footer  */
 

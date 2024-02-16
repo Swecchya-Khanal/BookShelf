@@ -54,4 +54,25 @@ from django.shortcuts import render
 
 
 
+# yourapp/views.py
+from django.shortcuts import render
+from .models import Book
+from .forms import BookFilterForm
+
+def browse_books(request):
+    books = Book.objects.all()
+    form = BookFilterForm(request.GET)
+
+    if form.is_valid():
+        author = form.cleaned_data['author']
+        category = form.cleaned_data['category']
+
+        if author:
+            books = books.filter(authors=author)
+
+        if category:
+            books = books.filter(categories=category)
+
+    context = {'books': books, 'form': form}
+    return render(request, 'browse.html', context)
 

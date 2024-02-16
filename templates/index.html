@@ -14,56 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<style>
-  .top-rated-books {
-    margin-top: 20px;
-  }
 
-  .top-rated-books h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-
-  .top-rated-books ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    /* Use flexbox for side-by-side layout */
-    flex-wrap: wrap;
-    /* Allow items to wrap to the next line */
-    justify-content: space-between;
-    /* Add space between items */
-  }
-
-  .top-rated-books li {
-    width: calc(33.33% - 20px);
-    /* Set width for each item with some margin in between */
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    /* Include padding and border in the element's total width and height */
-  }
-
-  .top-rated-books img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-
-  .top-rated-books h3 {
-    font-size: 18px;
-    margin-top: 10px;
-    color: #333;
-  }
-
-  .top-rated-books p {
-    font-size: 16px;
-    margin: 5px 0;
-    color: #555;
-  }
-</style>
 
 <body>
   <section>
@@ -135,110 +86,14 @@
         <h3>{{ book.title }}</h3>
         <p>Author: {{ book.authors.Authorname }}</p>
         <p>Rating: {{ book.average_rating }}</p>
-        <p>Price: RS {{ book.price }}</p>
+        <p>Price: $ {{ book.price }}</p>
+        <p><a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a>
+        </p>
       </li>
       {% endfor %}
     </ul>
   </div>
-  <!--reviews-->
 
-  <div class="reviews">
-    <h1>Reviews</h1>
-
-    <div class="review_box">
-      <div class="review_card">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="card_top">
-          <img src="review_1.png" />
-        </div>
-        <div class="card">
-          <h2>#</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
-            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
-            voluptas excepturi aut.
-          </p>
-          <div class="review_icon">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="review_card">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="card_top">
-          <img src="review_2.png" />
-        </div>
-        <div class="card">
-          <h2>#</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
-            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
-            voluptas excepturi aut.
-          </p>
-          <div class="review_icon">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="review_card">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="card_top">
-          <img src="review_3.png" />
-        </div>
-        <div class="card">
-          <h2>#</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
-            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
-            voluptas excepturi aut.
-          </p>
-          <div class="review_icon">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="review_card">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="card_top">
-          <img src="review_4.png" />
-        </div>
-        <div class="card">
-          <h2>#</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-            eos doloribus iure distinctio! Eos dolorem quam, nisi amet saepe
-            totam, quas quidem laboriosam dolore, tenetur itaque nostrum
-            voluptas excepturi aut.
-          </p>
-          <div class="review_icon">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer>
     <div class="foot-panel1">Back to top</div>

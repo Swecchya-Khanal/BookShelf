@@ -16,14 +16,23 @@
 
         <div class="registration_form">
             <h2>Register An Account</h2>
+            {% if messages %}
+
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+
+            {% endif %}
             <form action="#" method="post">
                 <div class="input_box">
                     <input type="text" placeholder="Username" required name="username" />
                 </div>
-
-                <!-- <div class="input_box">
+                <div class="input_box">
+                    <input type="text" placeholder="First Name" required name="first_name" />
+                </div>
+                <div class="input_box">
                     <input type="text" placeholder="Last Name" required name="last_name" />
-                </div> -->
+                </div>
 
                 <div class="input_box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>

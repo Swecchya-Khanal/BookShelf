@@ -15,9 +15,15 @@
         <span class="icon_close"><ion-icon name="close-outline"></ion-icon></span>
 
         <div class="login_form_box">
+
+
             <h2>Login</h2>
-            {% if error_message %}
-            <p class="error">{{ error_message }}</p>
+            {% if messages %}
+
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+
             {% endif %}
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
