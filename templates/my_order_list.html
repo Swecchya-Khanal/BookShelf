@@ -1,0 +1,152 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+    }
+
+    img {
+      max-width: 100px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    button {
+      padding: 5px 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .rating {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      font-size: 24px;
+      color: #ddd;
+      cursor: pointer;
+    }
+
+    .rating input:checked~label {
+      color: #f8b400;
+    }
+
+    .rating label:hover,
+    .rating label:hover~label {
+      color: #f8b400;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>My Orders</h2>
+
+    {% if orders %}
+    <ul>
+      {% for order in orders %}
+      <li>
+        <strong>Order ID:</strong> {{ order.pk }}<br />
+        <strong>Total Price:</strong> $ {{ order.total_price|floatformat:2 }}<br />
+        <strong>Ordered at:</strong> {{ order.created_at }}<br />
+        <strong>Ordered by:</strong> {{ order.first_name }} {{ order.last_name }} from {{order.address }}<br />
+        <strong>Ordered Books:</strong>
+        <ul>
+          {% for book in order.books.all %}
+          <li>
+            <div>
+              {% if book.upload %}
+              <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+              {% else %}
+              <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+
+              {% endif %}
+            </div>
+            <div>
+              <p><strong>Title:</strong> {{ book.title }}</p>
+              <p><strong>Author:</strong> {{ book.authors }}</p>
+              <p><strong>Book ID:</strong> {{ book.pk }}</p>
+              <p><strong>Price:</strong> $ {{ book.price }}</p>
+
+              <form method="post" action="{% url 'order:rate_book' book.id %}">
+                {% csrf_token %}
+
+                <button type="submit">Give Rating</button>
+              </form>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>You haven't placed any orders yet.</p>
+    {% endif %}
+  </div>
+</body>
+
+</html>
+{% else %}
+<p>You need to <a href="{% url 'login' %}?next=/order/my_orders/">login</a> to view your orders.</p>
+{% endif %}

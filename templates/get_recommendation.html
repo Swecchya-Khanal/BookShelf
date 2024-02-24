@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'get_recommendation.css' %}">
+    <title>Recommended Books</title>
+</head>
+
+<body>
+
+    <h1>Recommended Books</h1>
+
+    {% if recommended_books %}
+    <div class="recommended-books">
+        <ul class="book-list">
+            {% for book in recommended_books %}
+            <li class="book-item">
+                <div class="book-image">
+                    {% if book.upload %}
+                    <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+                    {% else %}
+                    <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+                    {% endif %}
+                </div>
+                <div class="book-details">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.authors.Authorname }}</p>
+                    <p>Category: {{ book.categories.Cat_name }}</p>
+                    <p>Rating: {{ book.average_rating|floatformat:"2" }}</p>
+                    <p>Price: RS {{ book.price }}</p>
+                    <p><a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a></p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% else %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+</body>
+
+</html>

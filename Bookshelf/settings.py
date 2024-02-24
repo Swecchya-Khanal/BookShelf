@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'Book',
     'cart',
     'order',
-    
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +139,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+#added manually
+LOGIN_URL = 'login'

@@ -4,7 +4,7 @@ from .models import Book
 from django.contrib.auth import logout 
 from django.db.models import Q
 from .models import Book
-
+from .forms import BookFilterForm
 
 
 
@@ -50,14 +50,7 @@ def custom_logout(request):
     logout(request)
     return redirect('home') 
   
-from django.shortcuts import render
 
-
-
-# yourapp/views.py
-from django.shortcuts import render
-from .models import Book
-from .forms import BookFilterForm
 
 def browse_books(request):
     books = Book.objects.all()
@@ -75,4 +68,3 @@ def browse_books(request):
 
     context = {'books': books, 'form': form}
     return render(request, 'browse.html', context)
-

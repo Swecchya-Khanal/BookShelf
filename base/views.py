@@ -10,8 +10,6 @@ from django.contrib.auth.models import User ,auth
 from django.contrib import messages
 
 
-
-
 def home(request):
     
     # Get the top-rated books based on average rating
@@ -22,7 +20,6 @@ def home(request):
     }
 
     return render(request, 'index.html', context)
-    
 
 def about(request):
     return render(request, 'about_us.html')

@@ -1,0 +1,26 @@
+<!-- yourapp/templates/yourapp/cart_confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Added to Cart - Your Bookstore</title>
+    <link rel="stylesheet" href="{% static 'cart_confirmation.css' %}">
+</head>
+
+<body>
+    <section class="confirmation">
+        <div class="container">
+            <h2>Book Added to Cart</h2>
+            <p>You have successfully added {{ quantity }} copy(ies) of "{{ book.title }}" to your cart.</p>
+            <a href="{% url 'Book:cart' %}">View Cart</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your BookShelf. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

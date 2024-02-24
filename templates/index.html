@@ -7,28 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookShelf</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'base/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-
-
 <body>
   <section>
     <nav>
       <div class="logo">
-        <img src={% static 'logo.png' %} />
+        <img src="{% static 'logo.png' %}" />
       </div>
 
       <ul>
         <li><a href="{% url 'home'%}">Home</a></li>
-        <li><a href="{% url 'about'%}">About</a></li>
+        <li><a href="{% url 'browse_books'%}">Browse</a></li>
         <li><a href="{% url 'featured_books' %}" class="featured-button">Featured</a></li>
         <li><a href="{% url 'new_arrival' %}" class="arrival-button">New Arrivals</a></li>
-        <li><a href="{% url 'reviews'%}">Reviews</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'order:get_recommendation' %}">Recommended Books</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" class="login_popup">Recommended Books</a></li>
+        {% endif %}
+        <li><a href="{% url 'order:my_order_list' %}">My Orders</a></li>
         {% if user.is_authenticated %}
         <!-- Display username and logout button if the user is authenticated -->
         <li>
@@ -49,6 +51,10 @@
           </div>
         </form>
 
+        <a class="view-cart-button" href="/cart/view/">
+          <i class="fa-solid fa-cart-shopping"></i> View Cart
+      </a>
+
       </ul>
 
     </nav>
@@ -59,18 +65,17 @@
         <h1>Welcome to<br /><span>BookShelf</span></h1>
 
         <p>
-          You are in bookself.com. You can also shop BookShelf Nepal for
-          variety of books of your interest with fast local delivery.
-          <a href="#">Click here to go to bookself.np</a>
+          You are in bookself.com. You can shop in BookShelf for
+          variety of books.
         </p>
-        <a href="#" class="main_btn">Learn More</a>
       </div>
 
       <div class="main_img">
-        <img src="{% static 'book1.gif' %}" />
+        <img src="{% static 'book.gif' %}" />
       </div>
 
   </section>
+
 
   <div class="top-rated-books">
     <h2>Top Rated Books</h2>
@@ -86,7 +91,7 @@
         <h3>{{ book.title }}</h3>
         <p>Author: {{ book.authors.Authorname }}</p>
         <p>Rating: {{ book.average_rating }}</p>
-        <p>Price: $ {{ book.price }}</p>
+        <p>Price: RS {{ book.price }}</p>
         <p><a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a>
         </p>
       </li>
@@ -96,54 +101,22 @@
 
 
   <footer>
-    <div class="foot-panel1">Back to top</div>
+    <div class="foot-panel1">Get to know us</div>
 
     <div class="foot-panel2">
       <ul>
-        <p>Get to know us</p>
-        <a href="#">Contact Us</a>
-        <a href="#">About BookSelf</a>
-        <a href="#">Investor Relations</a>
-        <a href="#">BookSelf Products</a>
+        <p>Quick Links</p>
+        <a href="/Book/new_arrival/">New Arrivals</a>
+        <a href="/Book/featured/">Featured</a>
       </ul>
-
       <ul>
-        <p>Get to know us</p>
-        <a href="#">Contact Us</a>
-        <a href="#">About BookSelf</a>
-        <a href="#">Investor Relations</a>
-        <a href="#">BookSelf Products</a>
-      </ul>
-
-      <ul>
-        <p>Get to know us</p>
-        <a href="#">Contact Us</a>
-        <a href="#">About BookSelf</a>
-        <a href="#">Investor Relations</a>
-        <a href="#">BookSelf Products</a>
-      </ul>
-
-      <ul>
-        <p>Get to know us</p>
-        <a href="#">Contact Us</a>
-        <a href="#">About BookSelf</a>
-        <a href="#">Investor Relations</a>
-        <a href="#">BookSelf Products</a>
+        <p>About</p>
+        <a href="contact/contact/">Contact Us</a>
+        <a href="about/">About Us</a>
       </ul>
     </div>
 
     <div class="foot-panel3">
-      <div class="logo"></div>
-    </div>
-
-    <div class="foot-panel4">
-      <div class="pages">
-        <a href="#">Conditions of use</a>
-        <a href="#">Privacy Notice</a>
-        <a href="#">Your Ads</a>
-        <a href="#">Privacy Choices</a>
-      </div>
-
       <div class="copyright">
         &copy;2023-2030, bookself.com,Inc,or its affiliates
       </div>

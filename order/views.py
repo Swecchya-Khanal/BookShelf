@@ -1,5 +1,3 @@
-# views.py in your order app
-
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -7,8 +5,9 @@ from .forms import OrderForm
 from .models import Order
 from Book.models import Book
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from Book.models import Book, MyRating
-
+from django.db import models
 @login_required
 def create_order(request):
     cart_items = request.session.get('cart', {}).values()
@@ -43,6 +42,7 @@ def create_order(request):
 
 @login_required
 def my_order_list(request):
+    
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'my_order_list.html', {'orders': orders})
 
@@ -51,13 +51,25 @@ def my_order_list(request):
 def rate_book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
 
+    # Check if the user has ordered the book
+    has_ordered = Order.objects.filter(user=request.user, books=book).exists()
+
+    if not has_ordered:
+        # Redirect to a page indicating that the user needs to order the book first
+        return render(request, 'order_required.html', {'book': book})
+    
+    existing_rating = MyRating.objects.filter(user=request.user, book=book).first()
+
+         
     if request.method == 'POST':
         # Handle the rating form submission
         rating_value = int(request.POST.get('rating', 0))
+         
+        
 
         if 1 <= rating_value <= 5:
             # Check if the user has already rated the book
-            existing_rating = MyRating.objects.filter(user=request.user, book=book).first()
+           
 
             if existing_rating:
                 # Update the existing rating
@@ -67,6 +79,47 @@ def rate_book(request, book_id):
                 # Create a new rating
                 MyRating.objects.create(user=request.user, book=book, ratingno=rating_value)
 
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+            return HttpResponseRedirect(reverse('order:my_order_list'))
 
-    return render(request, 'rate_book.html', {'book': book})
+    return render(request, 'rate_book.html', { 'book': book, 'existing_rating': existing_rating})
+
+
+
+
+
+from django.db import models
+
+
+def get_recommendation(request):
+    user = request.user
+
+    # Get all previous orders for the user
+    previous_orders = Order.objects.filter(user=user)
+
+    # Check if there are previous orders
+    if previous_orders.exists():
+        # Extract unique authors and categories from all previous orders
+        all_authors = set()
+        all_categories = set()
+
+        for order in previous_orders:
+            all_authors.update([book.authors.Authorname for book in order.books.all()])
+            all_categories.update([book.categories.Cat_name for book in order.books.all()])
+
+        # Extract unique books ordered in all previous orders
+        ordered_books_in_all_orders = set()
+        for order in previous_orders:
+            ordered_books_in_all_orders.update(order.books.all())
+
+        # Recommend books that have the same authors or categories as all previous orders, excluding ordered books
+        recommended_books = Book.objects.filter(
+            models.Q(authors__Authorname__in=all_authors) | models.Q(categories__Cat_name__in=all_categories)
+        ).exclude(id__in=[book.id for book in ordered_books_in_all_orders])
+
+        if recommended_books.exists():
+            # Render the template with the recommended books
+            return render(request, 'get_recommendation.html', {'recommended_books': recommended_books})
+        else:
+            return render(request, 'get_recommendation.html', {'message': "No recommended books found."})
+
+    return render(request, 'get_recommendation.html', {'message': "No previous orders found."})

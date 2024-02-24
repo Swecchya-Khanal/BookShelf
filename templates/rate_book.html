@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate This Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .book-info {
+            margin-bottom: 30px;
+        }
+
+        .book-info img {
+            max-width: 200px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info h2 {
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .book-info p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: white;
+            border-radius: 4px;
+            border-color: white;
+            margin-top: 5px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 30px;
+            color: #888;
+            transition: 1s ease-in-out;
+            text-shadow: 0 0 2px #000;
+        }
+
+        .rating label:hover,
+        .rating label:hover~label,
+        .rating input:checked~label {
+            color: yellow;
+        }
+
+        .rating input:checked~label:hover,
+        .rating input:checked~label:hover~label {
+            color: yellow;
+        }
+
+        .info {
+            margin-bottom: 20px;
+            color: #888;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rate This Book</h1>
+        <div class="book-info">
+            {% if book.upload %}
+            <img src="{{ book.upload.url }}" alt="{{ book.title }}" />
+            {% else %}
+            <img src="{{ book.thumbnail }}" alt="{{ book.title }}" />
+
+            {% endif %}
+            <h2>{{ book.title }}</h2>
+            <p>By {{ book.authors }}</p>
+            <p>{{ book.description }}</p>
+            <p>{{ myrating.ratingno}}</p>
+        </div>
+        <form method="post" action="{% url 'order:rate_book' book.id %}">
+            {% csrf_token %}
+
+            <div class="rating">
+                {% for i in '12345' reversed%}
+                {% if existing_rating and existing_rating.ratingno == i %}
+                <input type="radio" id="star{{ i }}-{{ book.pk }}" name="rating" value="{{ i }}" checked />
+                {% else %}
+                <input type="radio" id="star{{ i }}-{{ book.pk }}" name="rating" value="{{ i }}" />
+                {% endif %}
+                <label for="star{{ i }}-{{ book.pk }}"><i class="fas fa-star"></i></label>
+                {% endfor %}
+            </div>
+            {% if existing_rating %}
+            <p>Your current rating: {{ existing_rating.ratingno }}</p>
+            {% endif %}
+            <button type="submit">Submit Rating</button>
+        </form>
+    </div>
+</body>
+
+</html>

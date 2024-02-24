@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register An Account - Your Bookstore</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'base/registration.css' %}">
+    <link rel="stylesheet" href="{% static 'registration.css' %}">
 </head>
 
 <body>
 
     <div class="wrapper">
-        <span class="icon_close"><ion-icon name="close-outline"></ion-icon></span>
+        <a href="{% url 'home'%}"> <span class="icon_close"><img src="{% static 'cross1.png' %}" height="20px" width="20px" alt="Close"></span></a>
 
         <div class="registration_form">
             <h2>Register An Account</h2>

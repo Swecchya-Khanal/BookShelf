@@ -6,17 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Your Bookstore</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'base/login.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 
 <body>
 
     <div class="wrapper">
-        <span class="icon_close"><ion-icon name="close-outline"></ion-icon></span>
-
+        <a href="{% url 'home'%}"> <span class="icon_close"><img src="{% static 'cross1.png' %}" height="20px" width="20px" alt="Close"></span></a>
+        
         <div class="login_form_box">
-
-
             <h2>Login</h2>
             {% if messages %}
 
@@ -30,7 +28,7 @@
 
                 <div class="input_box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="text" placeholder="Email" required name="username" />
+                    <input type="text" placeholder="Username" required name="username" />
                 </div>
 
                 <div class="input_box">
@@ -38,10 +36,10 @@
                     <input type="password" placeholder="Password" required name="password" />
                 </div>
 
-                <div class="remember_forget">
+                {% comment %} <div class="remember_forget">
                     <label><input type="checkbox" />Remember me</label>
                     <a href="#">Forgot Password</a>
-                </div>
+                </div> {% endcomment %}
 
                 <button type="submit" class="submit_button">Login</button>
             </form>
