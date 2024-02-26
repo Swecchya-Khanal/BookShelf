@@ -63,7 +63,7 @@ section nav li a:hover {
   color: #089da1;
 }
 
-.view-cart-button{
+.view-cart-button {
   color: #ff523b;
 }
 
@@ -198,14 +198,19 @@ section .main .main_img img {
 
 }
 
+/* Optional: Hide the scrollbar for a cleaner look */
 .top-rated-books ul::-webkit-scrollbar {
   display: none;
 }
 
+
+
 .top-rated-books img {
   max-width: 100%;
   height: 300px;
+  /* Set a fixed height for all images */
   object-fit: cover;
+  /* Maintain aspect ratio and cover the container */
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -235,7 +240,6 @@ section .main .main_img img {
 .top-rated-books p a.buy-now-button:hover {
   background-color: #0056b3;
 }
-
 
 /* for footer  */
 
@@ -424,17 +428,16 @@ section .main .main_img img {
 
 .top-rated-books li {
   flex: 0 0 calc(25% - 100px);
-  /* Adjust the width based on the number of items you want to show per row */
   margin-right: 5px;
-  /* Adjust the margin to your preference */
   box-sizing: border-box;
   scroll-snap-align: 0;
-  /* Align items to the start of the scroll container */
+  border: 1px solid #ddd;
+  /* Add a border around each book */
+  border-radius: 5px;
 }
 
 .top-rated-books li:first-child {
   margin-left: 20px;
-
 }
 
 /* Optional: Hide the scrollbar for a cleaner look */
@@ -448,8 +451,9 @@ section .main .main_img img {
   max-width: 100%;
   height: 300px;
   /* Set a fixed height for all images */
+  width: 100%;
+  /* Add this line to ensure the width is 100% */
   object-fit: cover;
-  /* Maintain aspect ratio and cover the container */
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -458,12 +462,24 @@ section .main .main_img img {
   font-size: 18px;
   margin-top: 10px;
   color: #333;
+  white-space: nowrap;
+  /* Prevent title from wrapping to the next line */
+  overflow: hidden;
+  /* Hide any overflowed content */
+  text-overflow: ellipsis;
+  /* Show ellipsis (...) for truncated text */
 }
 
 .top-rated-books p {
   font-size: 16px;
   margin: 5px 0;
   color: #555;
+  white-space: nowrap;
+  /* Prevent paragraph from wrapping to the next line */
+  overflow: hidden;
+  /* Hide any overflowed content */
+  text-overflow: ellipsis;
+  /* Show ellipsis (...) for truncated text */
 }
 
 .top-rated-books p a.buy-now-button {
@@ -526,7 +542,7 @@ ul a {
 }
 
 .copyright {
-  padding-top:18px;
+  padding-top: 18px;
 }
 
 .author {

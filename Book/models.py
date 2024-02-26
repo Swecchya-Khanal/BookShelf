@@ -29,8 +29,8 @@ class Book(models.Model):
     num_pages = models.IntegerField(null=True)
     ratings_count = models.IntegerField(null=True, default=0)
     price = models.FloatField()
-    publication_date = models.DateField(auto_now_add=True)
-
+    publication_date = models.DateTimeField(auto_now_add=True)
+    featured=models.BooleanField(default=False)
     def __str__(self):
         return self.title
     

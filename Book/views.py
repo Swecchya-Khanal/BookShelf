@@ -32,7 +32,7 @@ def new_arrival(request):
     return render(request, 'arrival.html', context)
 
 def featured_books(request):
-    featured_books = Book.objects.all()[:7] 
+    featured_books = Book.objects.filter(featured=True)
     return render(request, 'featured_books.html', {'featured_books': featured_books})
 
 

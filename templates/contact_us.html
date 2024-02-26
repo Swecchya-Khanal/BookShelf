@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 <style>
     footer {
-        margin-top : 130px;
+        margin-top: 130px;
         text-align: center;
         padding: 10px;
         background-color: #333;
         color: #fff;
     }
 </style>
-<body>
-    
-<div class="container">
-    <h1 class="text-center mt-5">Contact Us</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form method="post" action="{% url 'contact' %}" class="mt-4">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
-                </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number">
-                </div>      
-                
-                <div class="mb-3">
-                    <label for="desc" class="form-label">Let us know why you want to contact us !!!</label>
-                    <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
+
+<div>
+    <h2 class="shadow bg-white rounded" align="center" style="color: rgb(26, 166, 166)">Our Location</h2>
+</div>
+<div class="mapouter">
+    <div class="gmap_canvas">
+        <iframe width="1080" height="400" id="gmap_canvas"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9421657060934!2d85.30005447528411!3d27.688182326336864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e60ae8656b%3A0xd8715f2ae901608!2z4KS44KSX4KSw4KSu4KS-4KSl4KS-IOCkh-CknuCljeCknOCkv-CkqOCkv-Ckr-CksOCkv-CkmSDgpJXgpLLgpYfgpJw!5e0!3m2!1sne!2snp!4v1708830562901!5m2!1sne!2snp"
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        <a href="https://www.pureblack.de/beste-wordpress-themes/"></a>
+    </div>
+
+    <style>
+        .mapouter {
+            position: relative;
+            text-align: right;
+            height: 400px;
+            width: 1080px;
+        }
+
+        .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 400px;
+            width: 1080px;
+            margin-left: 10%;
+            margin-top: 2%;
+            margin-bottom: 10%
+        }
+    </style>
+</div>
+<hr>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h3 align="center" style="color: rgb(26, 166, 166); margin-top:5%; margin-right: 63%;  ">CONTACT INFO</h3>
+            <hr>
+            <div style="margin-left: 5%">
+                <h4 style="color: rgb(12, 11, 2)">BookShelf-An Online Book Store</h4>
+                <h5 style="color: grey">Sanepa, Lalitpur</h5>
+                <h5 style="color: grey"><i class="fas fa-phone" style="color: black"></i>98665834111</h5>
+                <h5 style="color: grey"><i class="far fa-envelope" style="color: black"></i>bookshelf@gmail.com
+                </h5>
+            </div>
+        </div>
+        <div class="col">
+            <h3 align="center" style="color: rgb(26, 166, 166); margin-top:5%">FOLLOW US</h3>
+            <hr>
+
+            <div class="row" style="margin-left: 15%">
+                <h5 style="margin-left: 27%"><a
+                        href="https://www.facebook.com/profile.php?id=61556505373036&mibextid=ZbWKwL">Facebook</a></h5>
+                <h5 style="margin-left: 27%"><a
+                        href="https://www.instagram.com/bookshelf_an_online_bookstore/?igsh=MW9lcnpyYnNheGxybw%3D%3D">Instagram</a>
+                </h5>
+            </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+
 
 <footer>
     <p> &copy;2023-2030, bookself.com,Inc,or its affiliates</p>
 </footer>
 </body>
-</html>
 
+</html>

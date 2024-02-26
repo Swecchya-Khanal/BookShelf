@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Browse Books</title>
@@ -9,6 +10,10 @@
 
 <body>
     <h1>Browse Books</h1>
+    <form method="GET" action="{% url 'search_books' %}" class="search-box">
+        <input type="text" name="search_query" placeholder="Search by title">
+        <button type="submit">Search</button>
+    </form>
     <form method="get" action="{% url 'browse_books' %}">
         {{ form.as_p }}
         <button type="submit">Filter</button>

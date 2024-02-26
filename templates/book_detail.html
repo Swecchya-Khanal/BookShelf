@@ -8,29 +8,11 @@
     <title>{{ book.title }} - Your Bookstore</title>
     <link rel="stylesheet" href="{% static 'book_detail.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<style>
 
-    .fixed-button-container {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 999;
-        width: 112px;
-    }
-
-    .view-cart-button {
-        padding: 10px;
-        background-color: rgba(241, 164, 21, 0.905);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        border-radius: 6px;
-    }
-</style>
 
 <body>
     <div class="fixed-button-container">
@@ -38,10 +20,12 @@
         <a class="view-cart-button" href="/cart/view/">
             <i class="fa-solid fa-cart-shopping"></i> View Cart
         </a>
-        
+
         {% else %}
         <form action="{% url 'login' %}" method="get">
-            <button class="view-cart-button" onclick="window.location.href='/cart/view/'">View Cart</button>
+            <a class="view-cart-button" href="/cart/view/">
+                <i class="fa-solid fa-cart-shopping"></i> View Cart
+            </a>
         </form>
         {% endif %}
     </div>

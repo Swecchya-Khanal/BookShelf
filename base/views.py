@@ -37,17 +37,6 @@ def login(request):
     return render(request, 'login.html')
 
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.save()
-#             return redirect('home')
-#     else:
-#         form = RegistrationForm()
-
-#     return render(request, 'registration.html', {'form': form})
 
 
 
