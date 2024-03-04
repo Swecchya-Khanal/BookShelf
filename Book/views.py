@@ -27,7 +27,7 @@ class BookDetailViewWithSimilarBooks(DetailView):
 def new_arrival(request):
     
 
-    arrival_books = Book.objects.order_by('-publication_date')[:10]  
+    arrival_books = Book.objects.order_by('-publication_date')[:20]  
     context = {'arrival_books': arrival_books}
     return render(request, 'arrival.html', context)
 
