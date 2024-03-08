@@ -73,7 +73,7 @@ def rate_book(request, book_id):
 
             if existing_rating:
                 # Update the existing rating
-                existing_rating.ratingno = rating_value
+                existing_rating.rating_no = rating_value
                 existing_rating.save()
             else:
                 # Create a new rating
@@ -103,7 +103,7 @@ def get_recommendation(request):
         all_categories = set()
 
         for order in previous_orders:
-            all_authors.update([book.authors.Authorname for book in order.books.all()])
+            all_authors.update([book.authors.Author_name for book in order.books.all()])
             all_categories.update([book.categories.Cat_name for book in order.books.all()])
 
         # Extract unique books ordered in all previous orders
@@ -113,7 +113,7 @@ def get_recommendation(request):
 
         # Recommend books that have the same authors or categories as all previous orders, excluding ordered books
         recommended_books = Book.objects.filter(
-            models.Q(authors__Authorname__in=all_authors) | models.Q(categories__Cat_name__in=all_categories)
+            models.Q(authors__Author_name__in=all_authors) | models.Q(categories__Cat_name__in=all_categories)
         ).exclude(id__in=[book.id for book in ordered_books_in_all_orders])
 
         if recommended_books.exists():

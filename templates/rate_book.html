@@ -125,14 +125,14 @@
             <h2>{{ book.title }}</h2>
             <p>By {{ book.authors }}</p>
             <p>{{ book.description }}</p>
-            <p>{{ myrating.ratingno}}</p>
+            <p>{{ myrating.rating_no}}</p>
         </div>
         <form method="post" action="{% url 'order:rate_book' book.id %}">
             {% csrf_token %}
 
             <div class="rating">
                 {% for i in '12345' reversed%}
-                {% if existing_rating and existing_rating.ratingno == i %}
+                {% if existing_rating and existing_rating.rating_no == i %}
                 <input type="radio" id="star{{ i }}-{{ book.pk }}" name="rating" value="{{ i }}" checked />
                 {% else %}
                 <input type="radio" id="star{{ i }}-{{ book.pk }}" name="rating" value="{{ i }}" />
@@ -141,7 +141,7 @@
                 {% endfor %}
             </div>
             {% if existing_rating %}
-            <p>Your current rating: {{ existing_rating.ratingno }}</p>
+            <p>Your current rating: {{ existing_rating.rating_no }}</p>
             {% endif %}
             <button type="submit">Submit Rating</button>
         </form>

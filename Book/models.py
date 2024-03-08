@@ -11,13 +11,13 @@ class Category(models.Model):
         return self.Cat_name
 
 class Author(models.Model):
-    Authorname = models.TextField()
+    Author_name = models.TextField()
 
     def __str__(self):
-        return self.Authorname
+        return self.Author_name
 
 class Book(models.Model):
-    isbn10 = models.CharField(max_length=255, unique=True)
+    isbn_no = models.CharField(max_length=255, unique=True)
     title = models.TextField()
     authors = models.ForeignKey(Author, related_name='authors', on_delete=models.CASCADE)
     categories = models.ForeignKey(Category, related_name='categories', on_delete=models.CASCADE)
@@ -38,8 +38,8 @@ class Book(models.Model):
 
     def calculate_average_rating(self):
         ratings_data = self.rated_products.aggregate(
-            total_ratings=models.Avg('ratingno'),
-            count=models.Count('ratingno')
+            total_ratings=models.Avg('rating_no'),
+            count=models.Count('rating_no')
         )
         total_ratings = ratings_data['total_ratings']
         count = ratings_data['count']
@@ -51,7 +51,7 @@ class Book(models.Model):
 class MyRating(models.Model):
     user = models.ForeignKey(User, related_name='ratings', on_delete=models.CASCADE)
     book = models.ForeignKey(Book, related_name='rated_products', on_delete=models.CASCADE)
-    ratingno = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(0)])
+    rating_no = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(0)])
 
     def __str__(self):
         return f'Rated Book: {self.book}'

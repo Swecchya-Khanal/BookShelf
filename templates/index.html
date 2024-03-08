@@ -89,7 +89,7 @@
 
         {% endif %}
         <h3>{{ book.title }}</h3>
-        <p>Author: {{ book.authors.Authorname }}</p>
+        <p>Author: {{ book.authors }}</p>
         <p>Rating: {{ book.average_rating }} ({{book.ratings_count}})</p>
         <p>Price: $ {{ book.price }}</p>
         <p><a href="{% url 'book_detail' book.id %}" class="buy-now-button">View</a>
