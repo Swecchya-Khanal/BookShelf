@@ -19,7 +19,7 @@ class BookDetailViewWithSimilarBooks(DetailView):
         
         similar_books = Book.objects.filter(
             Q(authors=self.object.authors) | Q(categories=self.object.categories)
-        ).exclude(id=self.object.id).distinct()[:5]
+        ).exclude(id=self.object.id).distinct()[:10]
 
         context['similar_books'] = similar_books
         return context

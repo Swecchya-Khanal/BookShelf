@@ -25,7 +25,7 @@ class Book(models.Model):
     upload = models.ImageField(upload_to='uploads/', blank=True)
     description = models.TextField()
     published_year = models.IntegerField(null=True)
-    average_rating = models.FloatField(null=True)
+    average_rating = models.FloatField(null=True,default=0)
     num_pages = models.IntegerField(null=True)
     ratings_count = models.IntegerField(null=True, default=0)
     price = models.FloatField()
@@ -37,7 +37,6 @@ class Book(models.Model):
 
 
     def calculate_average_rating(self):
-        # Calculate the average rating and update ratings_count for the book
         ratings_data = self.rated_products.aggregate(
             total_ratings=models.Avg('ratingno'),
             count=models.Count('ratingno')

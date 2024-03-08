@@ -31,9 +31,9 @@
                         {{ book.title }}
                         {% if book.average_rating is not None %}
                         <span class="average-rating">
-                            {% for _ in book.average_rating|floatformat %}
+
                             <span class="star">&#9733;</span>
-                            {% endfor %}
+
                             {% if book.average_rating|floatformat:"0" != book.average_rating %}
                             {{ book.average_rating }}
                             {% endif %}
@@ -45,7 +45,7 @@
                         </span>
                         {% endif %}
                     </h2>
-                    <p class="author">By {{ book.authors }}</p>
+                    <p class="author">By {{ book.authors }}({{book.categories}})</p>
                     <p class="description">{{ book.description }}</p>
                     <p class="price">${{ book.price }}</p>
 
