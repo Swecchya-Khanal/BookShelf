@@ -77,7 +77,7 @@ def rate_book(request, book_id):
                 existing_rating.save()
             else:
                 # Create a new rating
-                MyRating.objects.create(user=request.user, book=book, ratingno=rating_value)
+                MyRating.objects.create(user=request.user, book=book, rating_no=rating_value)
 
             return HttpResponseRedirect(reverse('order:my_order_list'))
 

@@ -10,7 +10,6 @@ def add_to_cart(request, book_id):
     try:
         book = Book.objects.get(pk=book_id)
 
-        # Create or update the cart in the session
         cart = request.session.get('cart', {})
         cart_item = cart.get(book_id, {'quantity': 0})
         cart_item['quantity'] += 1
