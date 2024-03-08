@@ -24,17 +24,16 @@ class BookDetailViewWithSimilarBooks(DetailView):
         context['similar_books'] = similar_books
         return context
 
-def new_arrival(request):
-    
 
+def new_arrival(request):
     arrival_books = Book.objects.order_by('-publication_date')[:20]  
     context = {'arrival_books': arrival_books}
     return render(request, 'arrival.html', context)
 
+
 def featured_books(request):
     featured_books = Book.objects.filter(featured=True)
     return render(request, 'featured_books.html', {'featured_books': featured_books})
-
 
 def search_books(request):
     search_query = request.GET.get('search_query', '')
@@ -44,13 +43,10 @@ def search_books(request):
     return render(request, 'search_results.html', context)
 
 
-
-
 def custom_logout(request):
     logout(request)
     return redirect('home') 
   
-
 
 def browse_books(request):
     books = Book.objects.all()
